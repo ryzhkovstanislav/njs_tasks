@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <title>Главная</title>
+  </head>
+  <body>
+      <div class="wrap">
+          <header>
+              <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0d47a1;">
+                  <div class="container">
+                        <a class="navbar-brand" href="/">Сервис "Планирощик задач"</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">О нас</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>              
+          </header>
+          <main>
+              <section>
+                  <div class="container">
+                      <div class="row" id="parent">
+                          <div class="col-12">
+                              <h2 class="p-3 mb-4 text-center">Планировщик задач</h2>
+                              <form method="POST" action="/task/create/" enctype="application/x-www-form-urlencoded">
+                                  <div class="form-group">
+                                      <label for="exampleFormControlTextarea1">Новая задача</label>
+                                      <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  </div>
+                                  <button id="b1" type="submit" class="btn btn-primary">Добавить</button>
+                              </form>
+                          </div>
+                      </div>
+
+                      <div class="row">
+                          <h3 class="p-3 mb-4 text-center col-12">Список задач</h3>
+                      </div>
+
+                      <div class="row mb-5">
+                          <ul class="main-ul col-8 m-auto">
+                              {{#each tasks}}
+                              <li class="my-2 px-1 main-li">
+                                <div class="form-group">
+                                  <label for="exampleInput{{_id}}"></label>
+                                  <input name="updated" form="update{{_id}}" type="text" class="form-control" id="exampleInput{{_id}}" value="{{text}}" required>
+                                </div>
+                                <div class="pb-3">
+                                    <form class="main-form" id=update{{_id}} action="/task/update/{{_id}}" method="POST">
+                                        <button type="submit" class="btn btn-warning">Изменить</button>
+                                    </form>
+                                    <form class="main-form" action="/task/delete/{{_id}}" method="POST">
+                                        <button type="submit" class="btn btn-danger">Удалить</button>
+                                    </form>
+                                </div>
+                              </li>
+                              {{/each}}
+                          </ul>
+                      </div>
+                  </div>
+              </section>
+          </main>
+      </div>
+      <footer class="footer">
+      </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
