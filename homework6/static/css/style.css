@@ -1,0 +1,21 @@
+
+.wrap {
+    min-height: calc(100vh - 200px);
+}
+
+.main-ul {
+    list-style-type: none;
+}
+
+.main-li {
+    background-color: bisque;
+}
+
+.main-form {
+    display: inline;
+}
+
+.footer {
+    height: 200px;
+    background-color: #1c2331;
+}
